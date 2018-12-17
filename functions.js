@@ -1,11 +1,11 @@
 //reduce a target's currentHP
 function damageHP(target, amount){
+  debugger;
   if(amount >= target.currentHP){
     target.currentHP = 0;
   } else {
     target.currentHP -= amount;
   }
-  return target.currentHP;
 }
 
 //increase a target's currentHP
@@ -15,7 +15,6 @@ function healHP(target, amount){
   } else {
     target.currentHP += amount;
   }
-  return target.currentHP;
 }
 
 //draw a number of cards from the player's deck
@@ -44,7 +43,7 @@ function destroyCard(owningPlayer, targetCard){
 }
 
 //find the objects with the highest currentHP
-function findHighestHP(targets, n){
+function findNthHighestHP(targets, n=1){
   //put the HPs of all targets in an array, then set the highest as max
   var allHPs = targets.map(function(obj){return obj.currentHP})
   var max = Math.max.apply(Math, allHPs);
@@ -60,8 +59,7 @@ function findHighestHP(targets, n){
 }
 
 //find the objects with the lowest currentHP
-function findLowestHP(targets, n){
-  debugger;
+function findNthLowestHP(targets, n=1){
   //put the HPs of all targets in an array, then set the lowest as min
   var allHPs = targets.map(function(obj){return obj.currentHP})
   var min = Math.min.apply(Math, allHPs);
