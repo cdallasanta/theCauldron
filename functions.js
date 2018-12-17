@@ -45,30 +45,33 @@ function destroyCard(owningPlayer, targetCard){
 
 //find the objects with the highest currentHP
 function findHighestHP(targets, n){
-  debugger;
   //put the HPs of all targets in an array, then set the highest as max
   var allHPs = targets.map(function(obj){return obj.currentHP})
-  var max = Math.max(allHPs);
+  var max = Math.max.apply(Math, allHPs);
   //for an n number of times, remove the highest HP to find the next highest
   //i starting at 1 makes it so if you're looking for the higest HP, it skips this loop
   for(var i=1;i<n;i++){
     allHPs[allHPs.indexOf(max)] = "";
-    max = Math.max(allHPs);
+    max = Math.max.apply(Math, allHPs);
   }
 
-  //return an array with all targets whose currentHP is equal to the highest HP
+  //return an array with all targets whose currentHP is equal to the nth max
   return targets.filter(function(target){return target.currentHP == max});
 }
 
 //find the objects with the lowest currentHP
-function findLowestHP(targets){
-  //go through each object and find the lowest HP on the board
-  var lowestHP = 0;
-  for (var i=0;i<targets.length;i++){
-    if (targets[i].currentHP < lowestHP){
-      lowestHP = targets[i].currentHP;
-    }
+function findLowestHP(targets, n){
+  debugger;
+  //put the HPs of all targets in an array, then set the lowest as min
+  var allHPs = targets.map(function(obj){return obj.currentHP})
+  var min = Math.min.apply(Math, allHPs);
+  //for an n number of times, remove the lowest HP to find the next lowest
+  //i starting at 1 makes it so if you're looking for the lowest HP, it skips this loop
+  for(var i=1;i<n;i++){
+    allHPs[allHPs.indexOf(min)] = Infinity;
+    min = Math.min.apply(Math, allHPs);
   }
-  //return an array with all targets whose currentHP is equal to the lowest HP
-  return targets.filter(function(target){return target.currentHP == lowestHP});
+
+  //return an array with all targets whose currentHP is equal to the nth min
+  return targets.filter(function(target){return target.currentHP == min});
 }
