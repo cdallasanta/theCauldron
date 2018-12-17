@@ -1,5 +1,5 @@
+//reduce a target's currentHP
 function damageHP(target, amount){
-  debugger;
   if(amount >= target.currentHP){
     target.currentHP = 0;
   } else {
@@ -8,6 +8,7 @@ function damageHP(target, amount){
   return target.currentHP;
 }
 
+//increase a target's currentHP
 function healHP(target, amount){
   if(amount >= (target.MAXHP - target.currentHP)){
     target.currentHP = target.MAXHP;
@@ -17,23 +18,27 @@ function healHP(target, amount){
   return target.currentHP;
 }
 
+//draw a number of cards from the player's deck
 function drawCards(currentPlayer, amount){
   for(var i=0;i<amount;i++){
     currentPlayer.hand.push(currentPlayer.deck.pop());
   }
 }
 
+//discard a chosen card from the player's hand
 function discardCard(currentPlayer, targetCard){
   currentPlayer.hand.splice(targetCard);
 }
 
-function playCard(currentPlayer, playedCard){
+//play a chosen card from the player's hand
+function playCardFromHand(currentPlayer, playedCard){
   currentPlayer.hand[playedCard].effect();
   if(playedCard.cardType === "oneshot"){
     currentPlayer.trash.push(currentPlayer.hand.splice(playedCard));
   }
 }
 
+//move a target from the play area to the trash
 function destroyCard(owningPlayer, targetCard){
   owningPlayer.trash.push(owningPlayer.playArea.splice(targetCard));
 }
