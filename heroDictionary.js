@@ -106,8 +106,7 @@ var dendron = {
     cardName:"Stained Wolf",
     MAXHP:8,
     cardType:["tattoo", "villain", "target"],
-    startOfTurn:"",
     endOfTurn:function(){
-      var target = Math.max(player1.currentHP, player2.HP, player3.HP)
+      var target = Math.max(player1.currentHP, player2.HP, player3.HP);
     }
 };

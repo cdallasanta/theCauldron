@@ -38,3 +38,7 @@ function destroyCard(owningPlayer, targetCard){
   owningPlayer.trash.push(owningPlayer.playArea.splice(targetCard));
 }
 
+function findHighestHP(targets){
+  var highestHP = Math.max(null, targets.map(function(target){return target.currentHP}));
+  return targets.map(function(target){return target.currentHP == highestHP});
+}
