@@ -39,6 +39,11 @@ function destroyCard(owningPlayer, targetCard){
 }
 
 function findHighestHP(targets){
-  var highestHP = Math.max(null, targets.map(function(target){return target.currentHP}));
-  return targets.map(function(target){return target.currentHP == highestHP});
+  var highestHP = 0;
+  for (var i=0;i<targets.length;i++){
+    if (targets[i].currentHP > highestHP){
+      highestHP = targets[i].currentHP;
+    }
+  }
+  return targets.filter(function(target){return target.currentHP == highestHP});
 }

@@ -109,4 +109,5 @@ var dendron = {
     endOfTurn:function(){
       var target = Math.max(player1.currentHP, player2.HP, player3.HP);
     }
+  }
 };
