@@ -44,16 +44,20 @@ function destroyCard(owningPlayer, targetCard){
 }
 
 //find the objects with the highest currentHP
-function findHighestHP(targets){
-  //go through each object and find the hightest HP on the board
-  var highestHP = 0;
-  for (var i=0;i<targets.length;i++){
-    if (targets[i].currentHP > highestHP){
-      highestHP = targets[i].currentHP;
-    }
+function findHighestHP(targets, n){
+  debugger;
+  //put the HPs of all targets in an array, then set the highest as max
+  var allHPs = targets.map(function(obj){return obj.currentHP})
+  var max = Math.max(allHPs);
+  //for an n number of times, remove the highest HP to find the next highest
+  //i starting at 1 makes it so if you're looking for the higest HP, it skips this loop
+  for(var i=1;i<n;i++){
+    allHPs[allHPs.indexOf(max)] = "";
+    max = Math.max(allHPs);
   }
+
   //return an array with all targets whose currentHP is equal to the highest HP
-  return targets.filter(function(target){return target.currentHP == highestHP});
+  return targets.filter(function(target){return target.currentHP == max});
 }
 
 //find the objects with the lowest currentHP
