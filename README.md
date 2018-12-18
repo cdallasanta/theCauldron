@@ -14,7 +14,7 @@ v 0.2 - powers and restructure to classes, complete<br>
 -characters should have an area that denotes which cards are actively in their play area<br>
 -each hero has their base power attached to their class<br>
 
-v 0.3 - targets, persistence, and rearrange, in progress<br>
+v 0.3 - targets, persistence, and rearrange, complete<br>
 -can add persistent targets to play area<br>
 -equipments and ongoings stay in play area after being played<br>
 -move hero info and functions to other files<br>
@@ -24,4 +24,5 @@ phases of a turn<br>
 switch to C#, since that's going to be better in the long run probably<br>
 ongoings and equipment effects<br>
 alter damage before it is applied<br>
+event listeners?<br>
 visualize it all<br>

@@ -1,0 +1,54 @@
+#game {
+  display:grid;
+  grid-template-columns:17vw 17vw 17vw 48vw;
+  grid-template-rows: 23vh 73vh;
+  width:100%;
+  height:96vh;
+  border:1px solid black;
+}
+
+.play-area {
+  border: 1px solid black;
+  display:flex;
+  flex-flow:row wrap-reverse;
+  align-content:flex-start;
+}
+
+#villain-play-area {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+  background:darksalmon;
+}
+
+#hero1-play-area {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+  background:gold;
+}
+
+#hero2-play-area {
+  background:lightblue;
+}
+
+#hero3-play-area {
+  background:mediumorchid;
+}
+
+#hero4-play-area {
+  background:olive;
+}
+
+#environment-play-area {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+  background:darkseagreen;
+}
+
+.target{
+  width:100px;
+  height:100px;
+  margin:10px;
+  background:white;
+  text-align:center;
+  font-size:120%;
+}

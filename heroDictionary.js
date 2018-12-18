@@ -27,8 +27,15 @@ var knight = {
         drawCards(knight, 1);
         healHP(knight, 2);
       }
-    }
-    ],
+    },
+    {//When the Knight would be dealt damage, you may redirect that damage to this card.
+      cardName:"Plate Mail",
+      cardType:["equipment", "target"],
+      MAXHP:5,
+      effect:function(){
+        //TODO redirect damage from the Knight to this card
+      }
+    }],
   cardType:["hero", "target", "character"],
   basePower:{
       text:"The Knight deals 1 target 1 melee damage",
@@ -102,12 +109,13 @@ var dendron = {
   name:"Dendron",
   MAXHP:50,
   cardType:["villain", "target", "character"],
-  deck:{
+  deck:[{
     cardName:"Stained Wolf",
     MAXHP:8,
+    currentHP:8,
     cardType:["tattoo", "villain", "target"],
-    startOfTurn:"",
     endOfTurn:function(){
-      var target = Math.max(player1.currentHP, player2.HP, player3.HP)
+      var target = damageHP(findNthHighestHP(players, 1),3);
     }
+  }]
 };
