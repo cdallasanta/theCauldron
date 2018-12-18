@@ -1,5 +1,11 @@
+/*
+* 
+* functions that the game uses for playing
+* 
+*/
+
 //reduce a target's currentHP
-function damageHP(target, amount){
+function damageHP(instigator, target, amount){
   if(amount >= target.currentHP){
     target.currentHP = 0;
   } else {
@@ -32,9 +38,13 @@ function discardCard(currentPlayer, targetCard){
 
 //play a chosen card from the player's hand
 function playCardFromHand(currentPlayer, playedCard){
-  currentPlayer.hand[playedCard].effect();
+  //move card from hand to play area
+  currentPlayer.playArea.push(currentPlayer.hand.splice(playedCard, 1));
+  //do its effect
+  playedCard.effect();
+  //if it was a one-shot, move it to the trash
   if(playedCard.cardType === "oneshot"){
-    currentPlayer.trash.push(currentPlayer.hand.splice(playedCard));
+    currentPlayer.trash.push(currentPlayer.playArea.splice(playedCard,1));
   }
 }
 
@@ -74,4 +84,25 @@ function findLowestHP(targets, n){
 
   //return an array with all targets whose currentHP is equal to the nth min
   return targets.filter(function(target){return target.currentHP == min});
+}
+
+
+/*
+* 
+* functions for html visualization
+* 
+*/
+
+function createTarget(target, location){
+  var newTarget = document.createElement("DIV");
+  
+  //add card types to the target DIV's class list
+  target.cardType.forEach(function(type){
+    newTarget.classList.add(type);
+  });
+  
+  newTarget.innerHTML = `${target.cardName}<br>${target.currentHP}`;
+  var playArea = document.getElementByID(location);
+  
+  
 }

@@ -30,4 +30,7 @@ var H = players.length;
 
 var mainVillain = new Villain(dendron);
 
-var currentPlayer = player1;
+var phaseOrder = ["Start", "Play", "Draw", "End"];
+
+var currentPlayer = mainVillain;
+var currentPhase = phaseOrder[0];
