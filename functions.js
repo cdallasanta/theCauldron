@@ -38,7 +38,6 @@ function discardCard(currentPlayer, targetCard){
 
 //play a chosen card from the player's hand
 function playCardFromHand(currentPlayer, playedCard){
-  debugger;
   //move card from hand to play area
   currentPlayer.playArea.push(currentPlayer.hand.splice(playedCard, 1));
   //do its effect
